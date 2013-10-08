@@ -11,7 +11,6 @@ public class NeuralNetwork {
 		inAmount = inputArguments;
 		outAmount = outputArguments;
 		randGen = new Random();
-		// weights[columns][rows] = weights[output][input]
 		weights = new double[inAmount][outAmount];
 		for ( int i = 0; i < inAmount; i++ ) {
 			for ( int o = 0; o < outAmount; o++ ) {

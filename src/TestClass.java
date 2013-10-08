@@ -8,7 +8,6 @@ public class TestClass {
 		double[][] result = {{13,16}};
 		NeuralNetwork neurNet = new NeuralNetwork(2,1);
 		double[] input = {4,2};
-		double[] output = {6};
 		
 		if ( Matrix.cols(test) != 3 ) System.err.println("cols don't work");
 		if ( Matrix.rows(test) != 2 ) System.err.println("rows don't work");
