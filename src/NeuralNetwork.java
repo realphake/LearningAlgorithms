@@ -19,6 +19,13 @@ public class NeuralNetwork {
 		}
 	}
 	
+	@Override
+	public String toString() {
+		String output = "Neural Network with " + inAmount + " inputs";
+		output += " and " + outAmount + " outputs.";
+		return output;
+	}
+	
 	public double[] giveOutput( double[] input ) {
 		double[][] inputMatrix = {input};
 		double[] output = Matrix.multiply(inputMatrix, weights)[0];
