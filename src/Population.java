@@ -1,3 +1,5 @@
+import java.util.Random;
+
 
 public class Population {
 
@@ -11,7 +13,7 @@ public class Population {
 		}
 	}
 	
-	public giveReward(int denizenID, double reward) {
+	public void giveReward(int denizenID, double reward) {
 		fitness[denizenID] += reward;
 	}
 	
@@ -20,14 +22,16 @@ public class Population {
 		for ( int id = 0; id < fitness.length; id++ ) {
 			sumFitness += fitness[id];
 		}
-		rouletteBall = new Random().nextDouble(sumFitness); //TODO does this work?
+		double rouletteBall = new Random().nextDouble()*sumFitness;
+		sumFitness = 0;
 		for ( int id = 0; id < fitness.length; id++ ) {
-			if ( rouletteBall <= fitness[id] ) { //TODO less or equal or just less?
+			if ( rouletteBall <= fitness[id] + sumFitness ) { //TODO less or equal or just less?
 				return id;
 			} else {
-				sumFitness -= fitness[id]; // TODO enough?
+				sumFitness += fitness[id];
 			}
 		}
+		return -1;
 	}
 	
 	public NeuralNetwork returnDenizen( int denizenID ) {
