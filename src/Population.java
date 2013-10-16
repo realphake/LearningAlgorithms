@@ -1,16 +1,26 @@
+import java.util.Iterator;
 import java.util.Random;
 
 
 public class Population {
 
-	NeuralNetwork denizens[];
-	double fitness[];
-	Random randGen;
+	private NeuralNetwork[] denizens;
+	private double[] fitness;
+	private int[] IDs;
+	private Random randGen;
 	
-	public Population(int numberOfDenizens) {
+	public Population(int numberOfDenizens, int in, int outs ) {
+		this( numberOfDenizens, in, new int[] {outs} );
+	}
+	
+	public Population(int numberOfDenizens, int in, int[] outs ) {
 		denizens = new NeuralNetwork[numberOfDenizens];
+		fitness = new double[numberOfDenizens];
+		IDs = new int[numberOfDenizens];
 		for( int i = 0; i < numberOfDenizens; i++ ) {
+			denizens[i] = new NeuralNetwork( in , outs );
 			fitness[i] = 0.0;
+			IDs[i] = i;
 		}
 		randGen = new Random();
 	}
@@ -63,6 +73,10 @@ public class Population {
 			newDenizens[id] = denizens[rouletteSelectDenizen()];
 		}
 		denizens = newDenizens;
+	}
+	
+	public int[] IDs() {
+		return IDs;
 	}
 
 }

@@ -15,6 +15,10 @@ public class TestClass {
 		if ( Matrix.multiply(n,m) != null ) System.err.println("multiply doesn't check size");
 		if ( !Matrix.equal( Matrix.multiply(m,n), result ) ) System.err.println("multiply doesn't work");
 		System.out.println("All tests passed");
+		
+		World w = new World();
+		w.trainSum();
+		// TODO: print some output to show performance!
 	}
 
 }
