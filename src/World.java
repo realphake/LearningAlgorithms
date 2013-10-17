@@ -17,7 +17,7 @@ public class World {
 				double[] question = {randGen.nextInt(10), randGen.nextInt(10), randGen.nextInt(10)};
 				double agentsAnswer = agents.askDenizen(id, question)[0];
 				double realAnswer = question[0]+question[1]+question[2];
-				agents.giveReward(id, 1/Math.abs(agentsAnswer-realAnswer));
+				agents.giveReward(id, 1/Math.pow(2, Math.abs(agentsAnswer-realAnswer)));
 			}
 			agents.generation();
 		}

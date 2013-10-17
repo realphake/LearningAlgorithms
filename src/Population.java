@@ -70,6 +70,7 @@ public class Population {
 		for ( int id = 0; id < newDenizens.length; id++ ) {
 			// TODO this needs to mutate and crossover!
 			newDenizens[id] = denizens[rouletteSelectDenizen()];
+			this.fitness[id] = 0;
 		}
 		denizens = newDenizens;
 	}

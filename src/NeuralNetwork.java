@@ -17,7 +17,7 @@ public class NeuralNetwork {
 		outAmount = outputArguments;
 		randGen = new Random();
 		weights = new ArrayList<double[][]>();
-		int in = inAmount;
+		int in = inAmount+1;
 		for (int n = 0; n < outAmount.length; n++ ){
 			int out = outAmount[n];
 			double[][] element = new double[in][out];
@@ -27,7 +27,7 @@ public class NeuralNetwork {
 				}
 			}
 			weights.add(element);
-			in = out;
+			in = out+1;
 		}
 	}
 
@@ -41,11 +41,21 @@ public class NeuralNetwork {
 
 	public double[] giveOutput( double[] input ) {
 		double[][] output = {input};
+		// TODO: but now only the first layer has a bias!
 		for ( int n = 0; n < weights.size(); n++ ) {
+			output = new double[][] {addBiasToVector(output[0])};
 			output = Matrix.multiply(output, weights.get(n));
 		}
 		return output[0];
+	}
 
+	private double[] addBiasToVector(double[] input) {
+		double[] inputPlusBias = new double[input.length+1];
+		for ( int l = 0; l < input.length; l++ ){
+			inputPlusBias[l] = input[l];
+		}
+		inputPlusBias[input.length] = 1;
+		return inputPlusBias;
 	}
 
 }
